@@ -8,7 +8,6 @@ def get_pisano_period(m):
 def fibonacci_huge_naive(n, m):
     period = get_pisano_period(m)
     n = n % period
-    print(period)
     
     if n <= 1:
         return n
