@@ -2,9 +2,17 @@ from sys import stdin
 
 
 def optimal_value(capacity, weights, values):
-    value = 0.
-    # write your code here
-
+    value = 0
+    i = 0
+    values_weights = sorted([[val/we, we] for val, we in zip(values, weights)], reverse=True)
+    while capacity != 0 and i< len(values):
+        if values_weights[i][1] <= capacity:
+            value += values_weights[i][1] * values_weights[i][0]
+            capacity -= values_weights[i][1]
+        else:
+            value += capacity * values_weights[i][0]
+            capacity -= capacity
+        i += 1 
     return value
 
 
