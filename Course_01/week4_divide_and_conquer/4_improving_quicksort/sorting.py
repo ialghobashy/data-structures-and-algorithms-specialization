@@ -2,7 +2,26 @@ from random import randint
 
 
 def partition3(array, left, right):
-    # write your code here
+    pivot = array[left]
+    m1 = left # Boundary for elements < pivot
+    m2 = left # Boundary for elements == pivot
+    i = left + 1
+
+    while i <= right:
+        if array[i] < pivot:
+            array[i], array[m1] = array[m1], array[i]
+            m1 += 1
+            m2 += 1
+            if i > m2:
+                array[i], array[m2] = array[m2], array[i]
+        elif array[i] == pivot:
+            m2 += 1
+            array[i], array[m2] = array[m2], array[i]
+        i += 1
+
+    return m1, m2
+
+
 
 
 def randomized_quick_sort(array, left, right):
